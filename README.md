@@ -12,6 +12,8 @@ size) and from the local median and mean around the pixel.
 ## Usage
 
 ```
+git clone https://github.com/milancurkovic1980/statfusion.git
+cd statfusion
 pip install -r requirements.txt
 python statfusion.py page.jpg page_bin.png          # one image
 python statfusion.py input_folder output_folder     # all images in a folder
@@ -20,7 +22,7 @@ python statfusion.py input_folder output_folder     # all images in a folder
 Example with the camera pages of this repository:
 
 ```
-python statfusion.py data/camera/page1.bmp output/page1_bin.png
+python statfusion.py data/camera/page1.png output/page1_bin.png
 python statfusion.py data/camera output
 ```
 
@@ -32,7 +34,7 @@ The script prints, for every image, the run time and the quantities that drive t
 the ink intensity `T_I`, the contour intensity `B_I`, the window radius `K` and the scale factor `f`:
 
 ```
-page1.bmp: 8.54 s  T_I=63 B_I=114 K=13 f=0.655 -> output/page1_bin.png
+page1.png: 8.54 s  T_I=63 B_I=114 K=13 f=0.655 -> output/page1_bin.png
 ```
 
 The first run takes a few seconds longer because Numba compiles the code; the compiled code is
@@ -66,8 +68,14 @@ evaluation and were not tuned.
 | `data/dibco_txt` | transcriptions of the DIBCO images used for the OCR evaluation |
 | `data/dibco_images.csv` | the 122 DIBCO and H-DIBCO images used in the paper (collection, design or held-out group, and whether a transcription was used for OCR) |
 
+The camera pages are stored as PNG (lossless), so their pixels are identical to the images used in
+the paper.
+
 The DIBCO and H-DIBCO images and ground truth are not redistributed here; they are available from
 their organizers. The paper uses 122 images of ten collections, listed in `data/dibco_images.csv`.
+In that file, `design` marks the collections used in the design study of the paper (DIBCO 2009, 2011,
+2013, 2017 and 2019), and `held-out` marks the collections that were not used in any design decision
+(H-DIBCO 2010, 2012, 2014, 2016 and 2018).
 
 ## Test
 
