@@ -1,0 +1,69 @@
+J. Imaging 2026, 12, 182                                                                                                       6 of 23
+
+
+
+                           3.3. Seven-Step Phase-Shifting and Wrapped Phase
+                                 For an N-step phase-shifting algorithm, the captured intensity at pixel ( x, y) in the
+                           k-th image is modeled as
+
+                                                    Ik ( x, y) = I0 ( x, y) + Im ( x, y) cos(ϕ( x, y) + δk ),
+                                                                                                                                  (1)
+                                                                        k = 1, . . . , N,
+
+                           where I0 is the DC intensity, Im is modulation, ϕ( x, y) is the object-dependent phase, and δk
+                           are phase steps. For a uniform seven-step scheme,
+
+                                                                  2π
+                                                           δk =      ( k − 1),        k = 1, . . . , 7.                           (2)
+                                                                   7
+                                Wrapped phase is computed using harmonic sums [3,6]:
+
+                                                                     7
+                                                         C ( x, y) = ∑ Ik ( x, y) cos 2π
+                                                                                                 
+                                                                                       7 ( k − 1) ,                               (3)
+                                                                      k =1
+                                                                        7
+                                                         S( x, y) = ∑ Ik ( x, y) sin 2π
+                                                                                                
+                                                                                      7 ( k − 1) ,                                (4)
+                                                                      k =1
+                                                                                      
+                                               ϕw ( x, y) = atan2 −S( x, y), C ( x, y) ,          ϕw ∈ (−π, π ].                  (5)
+
+                                In the implementation used here, auxiliary Gray-code patterns are applied on the
+                           calibration plane to establish reference correspondence between projected fringes and cam-
+                           era observations and to determine an integer fringe-order term at each pixel. This coded
+                           information is combined with the wrapped phase to form an absolute phase representation
+                           through pixel-wise phase extension. Because the fringe-order term is obtained indepen-
+                           dently from the coded patterns rather than from spatial phase continuity, this procedure
+                           differs fundamentally from classical spatial phase unwrapping and is referred to here as
+                           Gray-code-assisted phase extension.
+                                Equation (5) gives the standard wrapped phase associated with the original ordering
+                           of the seven captured images. However, because the seven-step phase-shifting sequence is
+                           cyclic, the same acquisition can also be represented through seven cyclic phase references.
+                           Each cyclic representation is obtained by circularly shifting the phase-step indices prior to
+                           phase evaluation. Accordingly, instead of working with only one wrapped-phase image,
+                           we form a stack of seven phase-domain images
+
+                                                                (m)
+                                                              ϕw ( x, y),         m = 1, . . . , 7,                               (6)
+
+                                         (m)
+                           where each ϕw corresponds to one cyclic permutation of the seven-step phase sequence.
+                           For the proposed method, these cyclic phase-domain images are not a replacement for
+                           phase computation. They serve as the working representation for the subsequent local
+                           correspondence extraction stage. These cyclic representations preserve the same acquisition
+                           data while shifting the local phase reference, which changes the alignment of peak-shaped
+                           structures used in the subsequent detection stage. Because the phase-shifting sequence
+                           is cyclic, each cyclic permutation produces a phase-domain representation with slightly
+                           different local peak alignment. This property improves peak detectability and robustness
+                           in regions where local profile quality varies across the image. In practice, this redundancy
+                           increases the probability that at least one cyclic phase-domain representation exhibits
+                           a sufficiently well-defined local peak structure for stable localization. In the following,
+                           several intermediate phase representations are shown. Their purpose is to illustrate the
+                           signal used in the proposed procedure, not to introduce an additional phase-recovery step.
+
+
+
+                                                                                             https://doi.org/10.3390/jimaging12050182

@@ -1,0 +1,48 @@
+J. Imaging 2026, 12, 182                                                                                               4 of 23
+
+
+
+                           environments report degraded measurement reliability when fringe contrast is locally
+                           reduced or when illumination conditions vary significantly [20–23].
+                                These observations motivate the present work. The proposed method does not attempt
+                           to improve the wrapped-phase estimate itself. Instead, it changes the correspondence-
+                           extraction stage so that the final result depends on local peak geometry in a transformed
+                           phase signal rather than on successful global phase recovery.
+
+                           3. Materials and Methods
+                           3.1. Acquisition Setup and Data
+                                 A structured-light scanner typically consists of a calibrated camera–projector pair.
+                           In the implementation used here, the measurement system includes a single camera and
+                           a projected-pattern source rather than a dual-camera stereo configuration. A calibration
+                           plane is used as the reference surface for establishing projector–camera correspondence.
+                           Gray-code patterns are employed on the calibration plane to identify corresponding pro-
+                           jected fringe locations, while peak positions are computed on both the calibration plane
+                           and the measured object. In this way, the calibration-plane peaks provide the reference
+                           correspondence structure against which the object-surface peaks are analyzed. The acquisi-
+                           tion set includes a reference image, N sinusoidal phase-shifted fringe images (here N = 7),
+                           and optionally Gray-code patterns for coarse projector-coordinate decoding and indexing.
+                           Figure 1 shows an example acquisition set.
+                                 The upper part of Figure 1 summarizes the captured sinusoidal and coded patterns
+                           used in the acquisition sequence, while the lower image shows a representative reference
+                           view of the measured object. This figure clarifies that the proposed method starts from a
+                           standard multi-image fringe acquisition and does not require a special machine learning-
+                           oriented input representation. The seven sinusoidal patterns used in the proposed method
+                           have the same carrier frequency and differ only in phase shift. The additional coded
+                           patterns shown in Figure 1 are not part of the seven-step phase computation and are
+                           included only to illustrate the complete acquisition environment of the scanner. This
+                           clarification is important because the overview figure combines sinusoidal and coded
+                           patterns, whereas the mathematical model in Equations (1)–(5) is restricted to the seven
+                           same-frequency sinusoidal images.
+
+
+
+
+                           Figure 1. Example acquisition environment. The complete set may include a reference view, seven
+                           same-frequency phase-shifted sinusoidal patterns used for phase computation, and additional Gray-
+                           code patterns used only for auxiliary coarse decoding.
+
+                               In the notation of Equation (1), I0 denotes the direct-current (DC) component of the
+                           observed intensity.
+
+
+                                                                                     https://doi.org/10.3390/jimaging12050182

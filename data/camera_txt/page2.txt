@@ -1,0 +1,58 @@
+J. Imaging 2026, 12, 182                                                                                              2 of 23
+
+
+
+                           unwrapping. Because unwrapping enforces global consistency, local phase errors may
+                           propagate over larger regions and cause loss of reliable correspondences. This remains one
+                           of the main difficulties in practical structured-light measurements.
+                                 Here, we propose a correspondence extraction method for structured-light imaging
+                           based on phase-domain representations. Rather than relying on global phase continuity as
+                           the primary correspondence mechanism, correspondences are determined by subpixel peak
+                           localization in the phase-domain. In the proposed framework, correspondence extraction
+                           is treated as a local signal-analysis problem in the phase-domain rather than as a global
+                           phase-reconstruction problem.
+                                 The central idea is that peak localization is driven by local extremum geometry of
+                           the transformed phase profile, which in the Rioux–Blais formulation is related to local
+                           second-order structure. In the evaluated examples, this proved useful in some regions
+                           where global phase variation became less reliable because of low modulation, saturation,
+                           or reflectance effects. The key distinction is that conventional pipelines rely on first-order
+                           phase variation, whereas the proposed method exploits second-order local structure for
+                           correspondence extraction.
+                                 The proposed approach does not remove noise, saturation, or dynamic-range limi-
+                           tations from the phase estimate itself. Instead, it changes how these disturbances affect
+                           correspondence extraction by emphasizing local peak geometry over global phase conti-
+                           nuity. In the implementation used here, Gray-code patterns are applied on the calibration
+                           plane to establish reference correspondence locations and to assign pixel-wise fringe-order
+                           labels independently of spatial phase continuity. The main contribution of the paper,
+                           however, is the peak-extraction procedure itself. Gray-code information is used only for
+                           indexing and does not influence the local peak-detection mechanism.
+                                 The proposed framework should therefore be viewed as an alternative correspondence
+                           procedure based on phase-domain representations. It is not intended to replace established
+                           Gray-code-assisted or unwrapping-based methods in general use. Its purpose is to provide
+                           a simple and transparent local estimation procedure with favorable behavior in regions
+                           affected by reflection, low modulation, or non-uniform illumination.
+                                 It should be emphasized that the proposed method does not eliminate the need for
+                           phase indexing or phase extension in practical systems. When auxiliary coding (e.g., Gray-
+                           code patterns) is used to establish fringe order or reference correspondence, incorrect
+                           indexing may still affect the final result. The contribution of the method is therefore
+                           restricted to the local correspondence-extraction stage, not to replace phase indexing or
+                           phase recovery mechanisms.
+
+                           1.1. Contributions
+                                The main contributions of this paper are as follows:
+                           •    A structured-light correspondence analysis approach based on subpixel peak detection
+                                performed directly on phase-domain images.
+                           •    A wrapped-phase absolute value transformation that converts wrapped phase into
+                                peak-shaped profiles suitable for subpixel localization while reducing the influence of
+                                object-dependent intensity variations.
+                           •    A local correspondence formulation on phase-domain representations, where phase-
+                                domain images rather than raw intensity images serve as the working signal for the
+                                proposed detection stage.
+                           •    A comparison with conventional reference processing, together with discrepancy
+                                visualizations, qualitative consistency analysis, and a quantitative summary table.
+                           •    An extended evaluation including false-peak suppression criteria, processing-time
+                                comparison, and explicit discussion of method limitations.
+
+
+
+                                                                                    https://doi.org/10.3390/jimaging12050182

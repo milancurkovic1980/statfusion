@@ -1,0 +1,40 @@
+Complete Mathematical Derivation of Boehm’s
+Algorithm for Knot Insertion
+
+1 Introduction
+
+Boehm’s algorithm provides an efficient method for inserting knots into B-spline curves and
+surfaces while preserving their geometric shape. This comprehensive document presents
+the complete mathematical derivation, implementation details, and theoretical foundations
+of Boehm’s algorithm, including detailed proofs of all key formulas and their geometric
+interpretations.
+
+2 B-spline Fundamentals
+
+2.1 B-spline Basis Functions: Complete Definition
+
+Definition 1 (B-spline Basis Functions). Given a non-decreasing knot vector U = {u_0, u_1, ..., u_m},
+the B-spline basis functions of degree p are defined recursively:
+
+Degree 0:
+
+N_{i,0}(u) = { 1  if u_i ≤ u < u_{i+1}
+             { 0  otherwise                                      (1)
+
+Degree p > 0:
+
+N_{i,p}(u) = [(u - u_i)/(u_{i+p} - u_i)] N_{i,p-1}(u)
+           + [(u_{i+p+1} - u)/(u_{i+p+1} - u_{i+1})] N_{i+1,p-1}(u)  (2)
+
+2.2 Mathematical Properties of B-splines
+
+Theorem 1 (Partition of Unity). For any u ∈ [u_p, u_{m-p}], the B-spline basis functions satisfy:
+
+∑_{i=0}^{n} N_{i,p}(u) = 1                                        (3)
+
+where n = m - p - 1.
+
+Proof. The proof proceeds by induction on degree p. For p = 0, the result is immediate from
+the definition. For p > 0, assume the property holds for degree p - 1. Then:
+
+1

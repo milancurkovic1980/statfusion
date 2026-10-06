@@ -1,0 +1,59 @@
+J. Imaging 2026, 12, 182                                                                                                    8 of 23
+
+
+
+                           3.4.1. Wrapped Phase and Modulation Quality
+                                 Using the seven-step phase-shifting model in (1)–(5), we compute the wrapped phase
+                           ϕw ( x, y) ∈ (−π, π ]. A commonly used data-quality indicator is the fringe modulation
+                           amplitude (up to a constant factor),
+                                                                      q
+                                                         A( x, y) =       C2 ( x, y) + S2 ( x, y),                             (7)
+
+                           where C and S are the harmonic sums defined above. Low values of A typically indicate
+                           shadowed regions, saturation, or reduced fringe contrast, which correlates with increased
+                           phase noise and unwrapping failures.
+                               Optionally, a validity mask can be formed as
+
+                                                           Ω = {( x, y) | A( x, y) ≥ τA },                                     (8)
+
+                           with a threshold τA chosen empirically. In the comparison in Section 4.2, we avoid aggres-
+                           sive masking in order to expose failure regions in the conventional processing chain.
+
+                           3.4.2. Phase Unwrapping and Unwrapped Reference Signal
+                               The goal of phase-order recovery is to determine an integer fringe order k( x, y) ∈ Z
+                           such that the absolute phase can be written as
+
+                                                         ϕu ( x, y) = ϕw ( x, y) + 2π k( x, y),                                (9)
+
+                           with ϕu consistent with the underlying fringe geometry, up to a global constant.
+                                 The estimation of k( x, y) depends on the chosen strategy. In spatial phase unwrapping,
+                           k( x, y) is recovered from local phase continuity by applying an operator of the form
+                                                                                     
+                                                              k( x, y) = U ϕw ( x, y) ,                                       (10)
+
+                           where U (·) denotes a spatial unwrapping procedure [6,7]. Under low modulation, noise,
+                           or specular distortions, such methods may introduce incorrect 2π jumps that propagate
+                           over larger regions.
+                                 In contrast, temporal or coded approaches (e.g., Gray-code-based methods) estimate
+                           k( x, y) from additional pattern sequences rather than from spatial phase continuity. In
+                           these cases, k( x, y) is not a function of ϕw ( x, y) alone, but is obtained independently from
+                           auxiliary measurements.
+                                 The proposed method does not rely on spatial phase unwrapping for local correspon-
+                           dence extraction. While the experimental setup may employ Gray-code-assisted phase
+                           extension to obtain indexing information or an absolute phase representation for reference
+                           purposes, this information is not part of the local peak-detection principle itself. Instead,
+                           the method operates on phase-domain representations and performs local correspondence
+                           extraction by subpixel peak localization.
+
+                           3.4.3. Relation to the Proposed Peak-Based Method
+                                The conventional pipeline represents the scene through global phase consistency and a
+                           continuous unwrapped phase map (9). In contrast, the proposed method extracts local sub-
+                           pixel correspondences from absolute value phase representations derived from the wrapped
+                           phase. Therefore, the reference approach depends strongly on successful unwrapping or
+                           fringe-order estimation, whereas the proposed approach evaluates local correspondence
+                           primarily through local peak structure and peak detectability after phase formation.
+
+
+
+
+                                                                                          https://doi.org/10.3390/jimaging12050182

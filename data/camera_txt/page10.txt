@@ -1,0 +1,41 @@
+J. Imaging 2026, 12, 182                                                                                               10 of 23
+
+
+
+                                 In practice, Φ reduces sensitivity to object texture and reflectance-driven intensity
+                           variations compared with using raw intensity profiles, because it is derived from the phase-
+                           shifting operator rather than from local intensity maxima. Consequently, peak localization
+                           is driven primarily by the projected fringe structure. Even when reflective regions reduce
+                           modulation or apparent phase slope, the absolute value phase profile often preserves
+                           sufficient local structure for peak estimation, as discussed later in Section 3.9.
+                                 Figure 4 shows how the wrapped phase is transformed into the absolute value phase-
+                           domain. Figure 4a presents an example image Φ = |ϕw | that serves as the direct input for
+                           peak detection, while Figure 4b shows the same local region across all seven absolute value
+                           phase images. These images illustrate that the transformation does not merely visualize the
+                           wrapped phase differently, but reorganizes it into a form that produces more regular local
+                           peak structures.
+
+
+
+
+                                     (a) absolute value phase image Φ = |ϕw | used as input for peak detection
+
+
+
+
+                                   (b) The same local region in all seven absolute value phase images, Φ(1) – Φ(7)
+
+                           Figure 4. Example phase-domain absolute value image for peak detection (a), and the same local
+                           region across all absolute value phase images (b).
+
+                                Figure 5 gives a more local view of the same idea. The Figure 5a shows representative
+                           sections extracted from the wrapped-phase image stack, while the Figure 5b shows the
+                           corresponding sections after the magnitude transformation. The main visual difference is
+                           that the wrapped-phase sections exhibit sign changes and profile reversals, whereas the
+                           absolute value phase sections produce a clearer peak-shaped structure. This is precisely the
+                           property exploited by the subpixel peak detector in the next subsection.
+
+
+
+
+                                                                                       https://doi.org/10.3390/jimaging12050182
